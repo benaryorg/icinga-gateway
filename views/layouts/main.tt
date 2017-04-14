@@ -16,7 +16,7 @@
                         <ul>
                             <li><a href="/">Startseite</a></li>
                             <% IF !session.user %>
-                                <li><a href="/login?return_path=<% request.uri %>">Anmelden</a></li>
+                                <li><a href="/login?return_url=<% request.uri_for(request.path) %>">Anmelden</a></li>
                                 <li><a href="/register">Registrieren</a></li>
                             <% ELSE %>
                                 <li><a href="/security">Sicherheit</a></li>
