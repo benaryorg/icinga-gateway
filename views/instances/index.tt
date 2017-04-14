@@ -1,0 +1,12 @@
+<h1>Icinga2 Instanzen</h2>
+<div class="material_list">
+    <% FOREACH instance IN instances %>
+        <a href="/instances/edit?id=<% instance.id %>">
+            <div>
+                <span class="header"><% instance.description %></span>
+                <span class="subheader"><% instance.api_url %></span>
+            </div>
+        </a>
+    <% END %>
+    <a href="/instances/edit?id=new">＋</a>
+</div>

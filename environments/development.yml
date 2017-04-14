@@ -1,0 +1,7 @@
+---
+plugins:
+  DBIC:
+    default:
+      dsn: dbi:Pg:dbname=icinga_alexa
+      user: icinga_alexa
+      password: icinga_alexa

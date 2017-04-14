@@ -1,0 +1,3 @@
+<h1>Icinga2 API Gateway für Alexa</h1>
+<p>Hier können Sie Ihre Icinga2 API Endpunkte hinterlegen, die Sie dann mit dem Alexa Skill abfragen können. Dieser Zwischenserver ist aufgrund der Funktionsweise von Alexa nötig.</p>
+<p>Weitere Informationen gibt es in der <a href="/doc">Dokumentation</a>.</p>

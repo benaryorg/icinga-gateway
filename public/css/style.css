@@ -1,0 +1,211 @@
+body {
+    font-family: "Roboto", "Droid", sans-serif;
+    font-size: 18pt;
+    padding: 0;
+    margin: 0;
+}
+
+#page {
+    max-width: 1100px;
+    margin: auto;
+    box-shadow: 0px 0px 10px black;
+    position: relative;
+}
+
+header {
+    width: 100%;
+    font-size: 1.5em;
+    background-color: #00b6fd;
+    line-height: 2em;
+    box-shadow: 0px 2px 5px black;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    box-sizing: border-box;
+    color: white;
+    font-weight: bold;
+    clear: both;
+    text-shadow: 1px 1px 3px black;
+}
+
+footer {
+    width: 100%;
+    font-size: 0.7em;
+    text-align: center;
+}
+
+#content {
+    padding-top: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-bottom: 3em;
+    z-index: 1;
+}
+
+#menu {
+    display: inline;
+    float: right;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+#menu > a {
+    text-decoration: none;
+    color: white;
+}
+
+#menuPopup {
+    max-height: 0;
+    opacity: 0;
+    transition: opacity 0.1s ease-in, max-height 0.5s ease-in;
+    overflow: hidden;
+
+    font-size: 0.7em;
+    line-height: 1em;
+    color: #505050;
+    background: white;
+    text-shadow: none;
+    font-weight: normal;
+    box-shadow: 2px 2px 8px black;
+    z-index: 2;
+
+    position: absolute;
+    top: 0.6em;
+    right: 0.6em;
+
+    box-sizing: border-box;
+}
+
+#menu:active #menuPopup,
+#menuPopup:hover, #menuPopup:target {
+    max-height: 100em; /* larger than every size this may need */
+    opacity: 1;
+}
+
+#menuPopup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#menuPopup li {
+    padding: 0;
+    margin: 0;
+}
+
+#menuPopup li a {
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+
+    text-decoration: none;
+    color: #505050;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+
+    text-align: center;
+    box-sizing: border-box;
+}
+
+#menuPopup li a:hover {
+    background-color: #d0d0d0;
+}
+
+form {
+    border-top: 1px solid #505050;
+    padding-top: 1em;
+    padding-left: 2em;
+    border-bottom: 1px solid #505050;
+}
+
+form div.errors {
+    font-size: 0.7em;
+    color: red;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+form div.errors ul {
+    font-weight: normal;
+    margin: 0;
+}
+
+input[type=text],
+input[type=email],
+input[type=password] {
+    width: 20em;
+    margin-bottom: 1.5em;
+}
+
+input[type=submit],
+button {
+    display: block;
+    margin-bottom: 1.5em;
+}
+
+label {
+    display: block;
+}
+
+label:after {
+    content: ':';
+}
+
+div.material_list {
+    text-align: right;
+}
+
+div.material_list a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    background-color: rgba(0,0,0,0);
+    transition: background-color 0.2s ease-in;
+}
+
+div.material_list a:active {
+    background-color: rgba(0,0,0,0.2);
+}
+
+div.material_list a:last-child {
+    display: inline-block;
+    background-color: #fd0088;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1em;
+    border-radius: 1.1em 1.1em 1.1em 1.1em;
+    margin-right: 0.3em;
+    margin-bottom: 0.3em;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    line-height: 2.2em;
+    width: 2.2em;
+    text-align: center;
+}
+
+div.material_list div {
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid #d0d0d0;
+
+    padding-top: 0.6em;
+    padding-bottom: 0.6em;
+}
+
+div.material_list div:last-child {
+    border-bottom: none;
+}
+
+div.material_list .header {
+    margin-left: 0.3em;
+    display: block;
+}
+
+div.material_list .subheader {
+    font-size: 0.8em;
+    margin-left: 0.4em;
+    display: block;
+}

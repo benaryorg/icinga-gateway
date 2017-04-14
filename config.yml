@@ -1,0 +1,23 @@
+---
+appname: Icinga2 API Gateway
+encoding: utf8
+layout: main
+
+template: template_toolkit
+engines:
+  template:
+    template_toolkit:
+      start_tag: "<%"
+      end_tag: "%>"
+
+plugins:
+  DBIC:
+    default:
+      schema_class: LittleFox::Alexa::Skills::Icinga::CloudService::Schema
+  Auth::Tiny:
+    passthrough:
+      - "state"
+      - "client_id"
+      - "response_type"
+      - "scope"
+      - "redirect_uri"

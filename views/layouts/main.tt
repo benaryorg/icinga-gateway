@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><% IF title %><% title %> - <% END %>Icinga API gateway</title>
+        <meta http-equiv="content-type" type="text/html;charset=utf8">
+        <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <div id="page">
+            <header>
+                Icinga2 API gateway
+                <div id="menu">
+                    <a href="#menuPopup">☰</a>
+                    <div id="menuPopup">
+                        <ul>
+                            <li><a href="/">Startseite</a></li>
+                            <% IF !session.user %>
+                                <li><a href="/login?return_path=<% request.uri %>">Anmelden</a></li>
+                                <li><a href="/register">Registrieren</a></li>
+                            <% ELSE %>
+                                <li><a href="/security">Sicherheit</a></li>
+                                <li><a href="/instances">Instanzen</a></li>
+                            <% END %>
+                            <li><a href="/doc">Dokumentation</a></li>
+                            <li><a href="/terms">Bedingungen</a></li>
+                            <li><a href="/imprint">Impressum</a></li>
+                            <% IF session.user %>
+                                <li><a href="/logout">Abmelden</a></li>
+                            <% END %>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <div id="content">
+                <% content %>
+            </div>
+            <footer>
+                Copyright &copy; 2017 LittleFox - <a href="https://lf-net.org/">lf-net.org</a>
+            </footer>
+        </div>
+    </body>
+</html>

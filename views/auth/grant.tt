@@ -1,0 +1,11 @@
+<h1>Authentifizierungsanfrage</h1>
+<% IF client %>
+    <p><% client.name %> möchte Zugriff auf Ihren Account bekommen.</p>
+    <p><% client.description %></p>
+    <p>Wenn Sie diese Anfrage annehmen, bekommt <% client.name %> vollen Zugriff auf das API-Gateway zu Ihren Icinga-Instanzen.</p>
+    <form method="post">
+        <input type="submit" value="Anfrage akzeptieren">
+    </form>
+<% ELSE %>
+    <p>Authentifizierungsanfrage für unbekannten Client erhalten und geblockt.</p>
+<% END %>

@@ -1,0 +1,23 @@
+<h1>Registrieren</h1>
+<form method="post">
+    <% IF errors %>
+    <div class="errors">
+        Folgende Fehler sind aufgetreten:
+        <ul>
+            <% FOREACH error IN errors %>
+                <li><% error %></li>
+            <% END %>
+        </ul>
+    </div>
+    <% END %>
+    <label for="username">Benutzername</label>
+    <input type="text" name="username" id="username" value="<% username %>" required>
+    <label for="email">E-Mail Adresse</label>
+    <input type="email" name="email" id="email" value="<% email %>" required>
+    <label for="password1">Passwort</label>
+    <input type="password" name="password1" id="password1" required>
+    <label for="password2">Passwort wiederholen</label>
+    <input type="password" name="password2" id="password2" required>
+    <input type="submit" value="Registrieren">
+    <small>Mit der Registrierung stimmen Sie automagisch den <a href="/terms">Bedingungen</a> zu.</small>
+</form>
