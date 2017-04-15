@@ -163,7 +163,7 @@ div.material_list {
     text-align: right;
 }
 
-div.material_list a {
+div.material_list > a {
     display: block;
     color: black;
     text-decoration: none;
@@ -171,11 +171,12 @@ div.material_list a {
     transition: background-color 0.2s ease-in;
 }
 
-div.material_list a:active {
+div.material_list > a:active {
     background-color: rgba(0,0,0,0.2);
 }
 
-div.material_list a:last-child {
+div.material_list > a:last-child,
+div.material_list a.material_floating_button {
     display: inline-block;
     background-color: #fd0088;
     color: white;
@@ -191,17 +192,22 @@ div.material_list a:last-child {
     text-align: center;
 }
 
+div.material_list > a:last-child.small,
+div.material_list a.material_floating_button.small {
+    width: auto;
+    min-width: 1.4em;
+    line-height: 1.4em;
+    font-size: 0.7em;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
+}
+
 div.material_list div {
     width: 100%;
     text-align: left;
-    border-bottom: 1px solid #d0d0d0;
 
     padding-top: 0.6em;
     padding-bottom: 0.6em;
-}
-
-div.material_list div:last-child {
-    border-bottom: none;
 }
 
 div.material_list .header {

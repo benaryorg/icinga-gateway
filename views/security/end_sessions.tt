@@ -1,0 +1,7 @@
+<h1>Sitzungen beenden</h1>
+<form method="post">
+    <p>Achtung!</p>
+    <p>Wenn Sie fortfahren, werden <em>alle</em> Situngen beendet! In den betroffenen Anwendungen müssen Sie sich dann erneut einloggen.</p>
+    <p>Möchten Sie fortfahren?</p>
+    <input type="submit" value="Alle Sitzungen beenden">
+</form>

@@ -66,4 +66,16 @@ post '/password' => needs login => sub {
     }
 };
 
+get '/end_session' => sub {
+    template 'security/end_sessions' => {
+        submenu => $SECURITY_SUBMENU,
+    };
+};
+
+post '/end_session' => sub {
+    my $user = rset('User')->find(session('user'));
+    $user->tokens->delete;
+    redirect '/security';
+};
+
 1;

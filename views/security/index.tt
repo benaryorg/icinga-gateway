@@ -1,9 +1,11 @@
 <h1>Aktive Sitzungen</h1>
 <div class="material_list">
     <% FOREACH session IN sessions %>
-        <div>
-            <span class="header"><% session.client.name %></span>
-            <span class="subheader">Anmeldung: <% session.login_date %></span>
+        <div style="clear:both">
+            <div style="float: left; display: inline-block;">
+                <span class="header"><% session.client.name %></span>
+            </div>
         </div>
     <% END %>
+    <a href="/security/end_session" title="Alle Sitzungen beenden">♻</a>
 </div>
