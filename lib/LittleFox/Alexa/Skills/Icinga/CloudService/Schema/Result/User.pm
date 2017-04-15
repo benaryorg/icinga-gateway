@@ -35,6 +35,16 @@ __PACKAGE__->add_unique_constraints(['username']);
 __PACKAGE__->has_many(administrated_instances => 'LittleFox::Alexa::Skills::Icinga::CloudService::Schema::Result::Instance', 'admin_user_id');
 __PACKAGE__->has_many(tokens => 'LittleFox::Alexa::Skills::Icinga::CloudService::Schema::Result::OAuth2Token', 'user_id');
 
+sub verify_password {
+    my ($self, $password) = @_;
+
+    if(crypt($password, $self->password) eq $self->password) {
+        return 1;
+    }
+
+    return 0;
+}
+
 sub change_password {
     my ($self, $password) = @_;
 

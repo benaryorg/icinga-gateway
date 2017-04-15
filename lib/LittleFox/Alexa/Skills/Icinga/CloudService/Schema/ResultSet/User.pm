@@ -10,11 +10,7 @@ sub authenticate {
     my ($user_object) = $self->search({ username => $username });
     return unless defined $user_object;
 
-    if(crypt($password, $user_object->password) eq $user_object->password) {
-        return $user_object;
-    }
-
-    return;
+    return $user_object->verify_password($password) ? $user_object : undef;
 }
 
 sub register {

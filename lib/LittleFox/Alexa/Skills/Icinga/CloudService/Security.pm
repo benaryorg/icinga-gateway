@@ -31,6 +31,39 @@ get '/password' => needs login => sub {
 };
 
 post '/password' => needs login => sub {
+    my $old_password  = params->{old_password};
+    my $new_password1 = params->{new_password1};
+    my $new_password2 = params->{new_password2};
+
+    my $user = rset('User')->find(session('user'));
+
+    my @errors = ();
+
+    if(!$user->verify_password($old_password)) {
+        push(@errors, 'Bestehendes Passwort ist nicht korrekt');
+    }
+
+    if($new_password1 ne $new_password2) {
+        push(@errors, 'Neue Passwörter sind nicht identisch');
+    }
+
+    if(length($new_password1) < 8) {
+        push(@errors, 'Das neue Passwort muss mindestens 8 Zeichen lang sein (das ist aber auch die einzige Regel)');
+    }
+
+    if(@errors) {
+        template 'security/password' => {
+            submenu => $SECURITY_SUBMENU,
+            errors  => \@errors,
+        };
+    }
+    else {
+        $user->change_password($new_password1);
+        template 'security/password' => {
+            submenu => $SECURITY_SUBMENU,
+            success => 1,
+        };
+    }
 };
 
 1;
