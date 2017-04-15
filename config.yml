@@ -5,11 +5,18 @@ layout: main
 auto_page: 1
 
 template: template_toolkit
+session: Cookie
 engines:
   template:
     template_toolkit:
       start_tag: "<%"
       end_tag: "%>"
+  session:
+    Ćookie:
+      default_duration: 604800
+      with_request_address: false
+      cookie_name: icinga_gateway_session
+      is_http_only: true
 
 plugins:
   DBIC:

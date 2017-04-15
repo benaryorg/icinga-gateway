@@ -1,4 +1,8 @@
 ---
+engines:
+  session:
+    Cookie:
+      secret_key:  uphies6orooPoo2deit8kebaNgosuvoh0oong6unooch2eeChahghiequiepaiSu
 plugins:
   DBIC:
     default:
