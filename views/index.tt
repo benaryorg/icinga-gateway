@@ -1,3 +1,5 @@
-<h1>Icinga2 API Gateway für Alexa</h1>
-<p>Hier können Sie Ihre Icinga2 API Endpunkte hinterlegen, die Sie dann mit dem Alexa Skill abfragen können. Dieser Zwischenserver ist aufgrund der Funktionsweise von Alexa nötig.</p>
+<h1>Icinga2 API Gateway</h1>
+<p>Dies ist ein kleiner Webdienst, der es Anwendungen ermöglich, über einen zentralen Server auf verschiedene Icinga2-Instanzen und deren APIs zuzugreifen</p>
+<p>Anwendungen können sich dabei per OAuth2, Cookie oder Basic-Authentifizierung an diesem Server anmelden.</p>
+<p>Entwickelt wurde dieser Dienst, um einen Skill für Amazon Alexa zu ermöglichen. Diese Skills können vom Endnutzer nicht konfiguriert werden, es gibt nur Accountverknüpfungen über OAuth2. Deshalb war ein zentraler Server als Gateway notwendig, der aber auch für andere Anwendungen genutzt werden kann.</p>
 <p>Weitere Informationen gibt es in der <a href="/doc">Dokumentation</a>.</p>

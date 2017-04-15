@@ -1,0 +1,114 @@
+<h1>Dokumentation</h1>
+
+<ol>
+    <li><a href="#introduction">Einleitung</a></li>
+    <li><a href="#authentication">Authentifizierung</a>
+        <ol>
+            <li><a href="#authentication_basic">Basic-Authentifizierung</a></li>
+            <li><a href="#authentication_oauth2">OAuth2 Authentifizierung</a></li>
+        </ol>
+    </li>
+    <li><a href="#api">API Endpunkte</a>
+        <ol>
+            <li><a href="#api_list_instances">Instanzen auflisten</a></li>
+            <li><a href="#api_icinga">Icinga2 API Zugriff</a></li>
+        </ol>
+    </li>
+</ol>
+
+<a name="introduction">
+<h2>Einleitung</h2>
+<p>Dieser Webdienst ermöglicht den Zugriff auf entsprechend konfigurierte Icinga2-Instanzen über einen zentralen Server.</p>
+<p>Durch den zentralen Server können bestimmte Anwendung leichter und andere überhaupt erst entwickelt werden.
+    Ursprünglich wurde dieser Dienst für den Alexa Skill gebaut, der vom Endnutzer nicht konfiguriert werden kann.
+    Lediglich eine "Account-Verknüpfung" ist möglich. Dieser Dienst kann aber problemlos auch von anderen Anwendungen genutzt
+    werden und kann, falls es für andere Anwendung nötig ist, auch um Funktionen erweitert werden.</p>
+<p>Fragen, Probleme und Anregungen zu diesem Dienst können per E-Mail an
+<a href="mailto:littlefox@lf-net.org?subject=Icinga Gatway">littlefox@lf-net.org</a> mitgeteilt werden.</p>
+
+<a name="authentication">
+<h2>Authentifizierung</h2>
+<p>Nutzer der API können über 3 Wege authentifiziert werden: OAuth2, HTTP Basic-Auth und Loginformular+Cookie. Für Anwendungen
+    stehen dabei aber nur die ersten beiden Möglichkeiten zur Verfügung, die dritte geht nur zum Testen über den Browser, in dem man
+    eh schon eingeloggt ist.</p>
+<p>Die Authentifizierung über OAuth2 ist zu bevorzugen, die HTTP Basic-Authentifizierung sollte nur in kleinen, selbst geschriebenen
+    und nicht für die Öffentlichkeit gedachten Scripts verwendet werden.</p>
+
+<a name="authentication_basic">
+<h3>Basic-Authentifizierung</h3>
+<p>Die HTTP-Basic-Authentifizierung ist eine sehr einfache und standardisierte Variante zur Authentifizierung von Benutzern. Hierbei
+    werden die Zugangsdaten des Nutzers einfach entsprechend des HTTP Standards bei jedem Request mitgeschickt.</p>
+<p>Der Nachteil dieser Authentifizierungsart ist, dass Anwendungsentwickler dabei zum einen die Zugangsdaten benötigen, die sie auch
+    für andere Dinge verwenden könnten. Außerdem können einzelnen Anwendungen nicht die Zugriffsrechte entzogen werden, ohne das Passwort
+    zu ändern. Die OAuth2-Authentifizierung behebt diese Probleme, ist aber etwas aufwendiger zu implementieren.</p>
+
+<a name="authentication_oauth2">
+<h3>OAuth2-Authentifizierung</h3>
+<p>OAuth2 ist die bevorzugte Authentifizierungsart. Der Ablauf sieht dabei etwa wie folgt aus:
+<ul>
+    <li>Die Anwendung leitet den Nutzer zur Adresse https://icinga.lf-net.org/auth und gibt dabei die folgenden Parameter mit:
+    <ul>
+        <li><code>client_id</code><p>ID der Anwendung (wird beim Registrieren der Anwendung generiert)</p></li>
+        <li><code>state</code><p>kann von der Anwendung verwendet werden um Anfragen zu identifizieren, wird genau so wieder zurückgegeben</p></li>
+        <li><code>redirect_uri</code><p>Adresse zu der der Authentifizierungstoken ausgeliefert werden soll</p></li>
+        <li>Weitere Argumente können übergeben werden, werden aber bisher ignoriert :o)</li>
+    </ul></li>
+    <li>Falls noch nicht eingeloggt: der Nutzer loggt sich mit seinen Zugangsdaten in den Webdienst ein</li>
+    <li>Der Nutzer wird gefragt, ob die Anwendung Zugriff bekommen darf</li>
+    <li>Stimmt der Nutzer dem zu, wird er zu der von der Anwendung übergebenen <code>redirect_uri</code> weitergeleitet, wobei die folgenden Argumente
+    <em>im Fragment-Teil der URL</em> übergeben werden:
+        <ul>
+            <li><code>state</code><p>Das von der Anwendung an den Webdienst übergebene <code>state</code>-Argument</p></li>
+            <li><code>token_type</code><p>Typ des übergebenen Authentifizierungstokens, immer <code>Bearer</code></p></li>
+            <li><code>access_token</code><p>Der Authentifizierungstoken zum Verwenden durch die Anwendung</p></li>
+        </ul>
+    </li>
+</ul>
+
+<h4>Beispiele</h4>
+<p>Die Anwendung ruft die folgende Adresse auf:</p>
+<code>https://icinga.lf-net.org/auth?client_id=421337&amp;state=foobarbaz&amp;redirect_uri=http://localhost:5000/auth_token_deliver?custom_var=23&amp;illuminati=gr8</code>
+<p>Bei erfolgreicher Authentifizierung wird dann die folgende Adresse aufgerufen:</p>
+<code>http://localhost:5000/auth_token_deliver?custom_var=23&amp;illuminati=gr8#state=foobarbaz&amp;token_type=Bearer&amp;access_token=asdlasdlkashdkasdhaskdasdkasd</code>
+
+<p>Der so erhaltene Authentifizierungstoken muss dann bei jedem Request im <code>Authorization</code>-Header mitgeschickt werden. Beispiel: <code>Authorization: Bearer asdasdasdasdasdasd</code>.</p>
+
+<p>Momentan gibt es für die Registrierung neuer Anwendungen noch keine Schnittstelle, deshalb bitte neue Anwendungen mit der Angabe der folgenden Informationen per Mail an
+    <a href="mailto:littlefox@lf-net.org?subject=Icinga Gateway OAuth2 Clientregistrierung">littlefox@lf-net.org</a> registrieren:
+    <ul>
+        <li>Name der Anwendung</li>
+        <li>Beschreibung der Anwendung</li>
+        <li>Webseite mit mehr Informationen</li>
+        <li>Liste der gültigen <code>redirect_uri</code> URLs für mehr Sicherheit</li>
+    </ul>
+</p>
+
+<a name="api">
+<h2>API</h2>
+<p>Es gibt nur 2 API-Endpunkte: Instanzen Auflisten und API-Gateway zu Icinga. Hier ist also recht wenig zu dokumentieren (und zu lesen).</p>
+<p>Die Authentifizierung läuft immer wie im Kapitel Authentifizierung beschrieben.</p>
+
+<a name="api_list_instances">
+<h3>Instanzen auflisten</h3>
+<p><code>GET /api</code> gibt eine JSON-Struktur im folgenden Format zurück:
+<pre>
+    {
+        "instances": [
+            {
+                "id":          42,
+                "base_href":   "https://icinga.lf-net.org/api/42",
+                "status_href": "https://icinga.lf-net.org/api/42/v1/status"
+            }
+        ]
+    }
+</pre>Im <code>instances</code>-Array können dabei mehrere Objekte der gleichen Art enthalten sein - eins pro eingestellter Instanz des Nutzers.</p>
+
+
+<a name="api_icinga">
+<h3>Icinga API</h3>
+<p>Mit dem <code>base_href</code> aus dem vorherigen Endpunkt können beliebige Icinga2 API Endpunkte angesprochen werden.
+Als Beispiel wird für jede Instanz der Link zum Status-Endpunkt mit ausgeliefert, auch wenn der natürlich selber ermitelt
+werden könnte.</p>
+<p>Sämtliche Argumente, die an diesen Webdienst übermittelt werden, werden direkt an die Icinga2 API weitergeleitet, hier
+gibt es also keine Einschränkungen durch die Verwendung des Webdiestens.</p>
+<p>Aktuell werden allerdings nur <code>GET</code>-Anfragen unterstützt. Weitere werden implementiert, sobald Sie benötigt werden.</p>

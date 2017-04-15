@@ -2,6 +2,7 @@
 appname: Icinga2 API Gateway
 encoding: utf8
 layout: main
+auto_page: 1
 
 template: template_toolkit
 engines:
