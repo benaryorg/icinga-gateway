@@ -18,15 +18,11 @@ header {
     line-height: 2em;
     box-sizing: border-box;
     color: white;
-    font-weight: bold;
-    text-shadow: 1px 1px 3px black;
-}
-
-header > div:first-child {
-    background-color: #00b6fd;
-    box-shadow: 0px 1px 3px black;
+    background-color: #34aadc;
+    box-shadow: 0px 3px 5px black;
     padding-left: 0.5em;
     padding-right: 0.5em;
+    font-weight: bold;
 }
 
 footer {
@@ -214,12 +210,11 @@ div.material_list .subheader {
 }
 
 div.tabs {
-    background-color: #5fd2ff;
     padding: 0;
     font-size: 0.7em;
     line-height: 1.1em;
     font-weight: normal;
-    box-shadow: 0px 1px 3px black;
+    text-shadow: none;
 }
 
 div.tabs a {
@@ -228,14 +223,13 @@ div.tabs a {
     text-align: center;
     box-sizing; border-box;
     margin: 0;
-    color: white;
+    color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
     height: 1.6em;
     box-sizing: border-box;
 }
 
 div.tabs a.active_tab {
-    background-color: #00b6fd;
-    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
     border-bottom: 0.2em solid white;
 }
