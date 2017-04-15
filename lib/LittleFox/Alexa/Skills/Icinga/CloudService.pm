@@ -5,9 +5,10 @@ use Dancer2::Plugin::Auth::Tiny;
 use Dancer2::Plugin::DBIC;
 use URI;
 
-use LittleFox::Alexa::Skills::Icinga::CloudService::Security;
-use LittleFox::Alexa::Skills::Icinga::CloudService::OAuth2;
+use LittleFox::Alexa::Skills::Icinga::CloudService::API;
 use LittleFox::Alexa::Skills::Icinga::CloudService::Instances;
+use LittleFox::Alexa::Skills::Icinga::CloudService::OAuth2;
+use LittleFox::Alexa::Skills::Icinga::CloudService::Security;
 
 prefix undef;
 our $VERSION = 0.001;
