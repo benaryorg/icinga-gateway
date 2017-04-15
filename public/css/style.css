@@ -15,16 +15,18 @@ body {
 header {
     width: 100%;
     font-size: 1.5em;
-    background-color: #00b6fd;
     line-height: 2em;
-    box-shadow: 0px 2px 5px black;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
     box-sizing: border-box;
     color: white;
     font-weight: bold;
-    clear: both;
     text-shadow: 1px 1px 3px black;
+}
+
+header > div:first-child {
+    background-color: #00b6fd;
+    box-shadow: 0px 1px 3px black;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
 }
 
 footer {
@@ -66,7 +68,7 @@ footer {
     text-shadow: none;
     font-weight: normal;
     box-shadow: 2px 2px 8px black;
-    z-index: 2;
+    z-index: -1;
 
     position: absolute;
     top: 0.6em;
@@ -79,6 +81,7 @@ footer {
 #menuPopup:hover, #menuPopup:target {
     max-height: 100em; /* larger than every size this may need */
     opacity: 1;
+    z-index: 2;
 }
 
 #menuPopup ul {
@@ -208,4 +211,31 @@ div.material_list .subheader {
     font-size: 0.8em;
     margin-left: 0.4em;
     display: block;
+}
+
+div.tabs {
+    background-color: #5fd2ff;
+    padding: 0;
+    font-size: 0.7em;
+    line-height: 1.1em;
+    font-weight: normal;
+    box-shadow: 0px 1px 3px black;
+}
+
+div.tabs a {
+    display: inline-block;
+    padding-top: 0.2em;
+    text-align: center;
+    box-sizing; border-box;
+    margin: 0;
+    color: white;
+    text-decoration: none;
+    height: 1.6em;
+    box-sizing: border-box;
+}
+
+div.tabs a.active_tab {
+    background-color: #00b6fd;
+    font-weight: bold;
+    border-bottom: 0.2em solid white;
 }

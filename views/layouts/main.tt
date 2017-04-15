@@ -9,28 +9,35 @@
     <body>
         <div id="page">
             <header>
-                Icinga2 API gateway
-                <div id="menu">
-                    <a href="#menuPopup">☰</a>
-                    <div id="menuPopup">
-                        <ul>
-                            <li><a href="/">Startseite</a></li>
-                            <% IF !session.user %>
-                                <li><a href="/login?return_url=<% request.uri_for(request.path) %>">Anmelden</a></li>
-                                <li><a href="/register">Registrieren</a></li>
-                            <% ELSE %>
-                                <li><a href="/security">Sicherheit</a></li>
-                                <li><a href="/instances">Instanzen</a></li>
-                            <% END %>
-                            <li><a href="/doc">Dokumentation</a></li>
-                            <li><a href="/terms">Bedingungen</a></li>
-                            <li><a href="/imprint">Impressum</a></li>
-                            <% IF session.user %>
-                                <li><a href="/logout">Abmelden</a></li>
-                            <% END %>
-                        </ul>
+                <div>
+                    Icinga2 API gateway
+                    <div id="menu">
+                        <a href="#menuPopup">☰</a>
+                        <div id="menuPopup">
+                            <ul>
+                                <li><a href="/">Startseite</a></li>
+                                <% IF !session.user %>
+                                    <li><a href="/login?return_url=<% request.uri_for(request.path) %>">Anmelden</a></li>
+                                    <li><a href="/register">Registrieren</a></li>
+                                <% ELSE %>
+                                    <li><a href="/security">Sicherheit</a></li>
+                                    <li><a href="/instances">Instanzen</a></li>
+                                <% END %>
+                                <li><a href="/doc">Dokumentation</a></li>
+                                <li><a href="/terms">Bedingungen</a></li>
+                                <li><a href="/imprint">Impressum</a></li>
+                                <% IF session.user %>
+                                    <li><a href="/logout">Abmelden</a></li>
+                                <% END %>
+                            </ul>
+                        </div>
                     </div>
                 </div>
+                <% IF submenu %>
+                    <div class="tabs">
+                        <% FOREACH entry IN submenu %><a style="width: <% 100 / submenu.size %>%" href="<% entry.url %>" <% IF entry.url == request.path %>class="active_tab"<% END %>><% entry.name %></a><% END %>
+                    </div>
+                <% END %>
             </header>
             <div id="content">
                 <% content %>
