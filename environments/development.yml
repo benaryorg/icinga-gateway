@@ -2,6 +2,10 @@
 engines:
   session:
     Cookie:
+      default_duration: 604800
+      with_request_address: false
+      cookie_name: icinga_gateway_session
+      is_http_only: true
       secret_key:  uphies6orooPoo2deit8kebaNgosuvoh0oong6unooch2eeChahghiequiepaiSu
 plugins:
   DBIC:
