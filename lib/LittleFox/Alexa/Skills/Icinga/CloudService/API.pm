@@ -67,7 +67,7 @@ get '/:instance_id/**' => sub {
 
     my $user     = get_user;
     my $instance = rset('Instance')->find(params->{instance_id});
-    my $path     = join('/', $parts->@*) . '?' . uri_decode(request->query_string);
+    my $path     = join('/', @$parts) . '?' . uri_decode(request->query_string);
     debug $path;
 
     if($instance->admin_user_id != $user->id) {
