@@ -45,6 +45,10 @@ sub get_user {
 get '' => sub {
     my $user = get_user;
 
+    if(!defined($user)) {
+        return;
+    }
+
     my @instances = map {
         {
             id          => $_->id,
@@ -65,7 +69,12 @@ get '' => sub {
 get '/:instance_id/**' => sub {
     my ($parts) = splat;
 
-    my $user     = get_user;
+    my $user = get_user;
+
+    if(!defined($user)) {
+        return;
+    }
+
     my $instance = rset('Instance')->find(params->{instance_id});
     my $path     = join('/', @$parts) . '?' . uri_decode(request->query_string);
     debug $path;
