@@ -233,3 +233,9 @@ div.tabs a.active_tab {
     color: rgba(255, 255, 255, 1);
     border-bottom: 0.2em solid white;
 }
+
+@media (max-width: 30em) {
+    body {
+        font-size: 12pt;
+    }
+}
