@@ -1,8 +1,8 @@
-<h1>Registrieren</h1>
+<h1><% l('Registrieren') %></h1>
 <form method="post">
     <% IF errors %>
     <div class="errors">
-        Folgende Fehler sind aufgetreten:
+        <% l('Folgende Fehler sind aufgetreten:') %>
         <ul>
             <% FOREACH error IN errors %>
                 <li><% error %></li>
@@ -10,14 +10,17 @@
         </ul>
     </div>
     <% END %>
-    <label for="username">Benutzername</label>
+    <% IF success %>
+        <small><% l('Konto erfolgreich registriert.') %></small>
+    <% END %>
+    <label for="username"><% l('Benutzername') %></label>
     <input type="text" name="username" id="username" value="<% username %>" required>
-    <label for="email">E-Mail Adresse</label>
+    <label for="email"><% l('E-Mail Adresse') %></label>
     <input type="email" name="email" id="email" value="<% email %>" required>
-    <label for="password1">Passwort</label>
+    <label for="password1"><% l('Passwort') %></label>
     <input type="password" name="password1" id="password1" required>
-    <label for="password2">Passwort wiederholen</label>
+    <label for="password2"><% l('Passwort wiederholen') %></label>
     <input type="password" name="password2" id="password2" required>
-    <input type="submit" value="Registrieren">
-    <small>Mit der Registrierung stimmen Sie automagisch den <a href="/terms">Bedingungen</a> zu.</small>
+    <input type="submit" value="<% l('Registrieren') %>">
+    <small><% l("Mit der Registrierung stimmen Sie automagisch den <a href='/terms'>%1</a> zu.", [l('Bedingungen')]) %></small>
 </form>

@@ -74,6 +74,7 @@ post '/edit' => needs login => sub {
     template 'instances/edit' => {
         readonly => $readonly,
         entry    => $entry,
+        success  => 1,
     };
 };
 

@@ -1,16 +1,19 @@
-<h1>Instanz <% IF entry %>bearbeiten<% ELSE %>anlegen<% END %></h1>
+<h1><% IF entry %><% l('Instanz bearbeiten') %><% ELSE %><% l('Instanz anlegen') %><% END %></h1>
 <form method="post">
-    <label for="description">Beschreibung</label>
+    <% IF success %>
+        <small><% l('Speichern erfolgreich.') %></small>
+    <% END %>
+    <label for="description"><% l('Beschreibung') %></label>
     <input type="text" name="description" id="description" value="<% entry.description %>" <% IF readonly %>readonly<% END %> class="long">
-    <label for="api_url">API URL</label>
-    <input type="text" name="api_url" id="api_url" value="<% entry.api_url %>" <% IF readonly %>readonly<% END %> class="long">
+    <label for="api_url"><% l('API URL') %></label>
+    <input type="text" name="api_url" id="api_url" value="<% entry.api_url %>" <% IF readonly %>readonly<% END %> class="long" required>
     <% IF !readonly %>
-        <label for="api_user">API Nutzername</label>
-        <input type="text" name="api_user" id="api_user" value="<% entry.api_user %>">
-        <label for="api_password">API Passwort</label>
-        <input type="password" name="api_password" id="api_password">
-        <label for="api_cert">API Zertifikat</label>
+        <label for="api_user"><% l('API Nutzername') %></label>
+        <input type="text" name="api_user" id="api_user" value="<% entry.api_user %>" required>
+        <label for="api_password"><% l('API Passwort') %></label>
+        <input type="password" name="api_password" id="api_password" <% IF ! entry %>required<% END %>>
+        <label for="api_cert"><% l('API Zertifikat') %></label>
         <textarea name="api_cert" id="api_cert" cols="80" rows="25"><% entry.api_certificate %></textarea>
     <% END %>
-    <input type="submit" value="<% IF entry %>Speichern<% ELSE %>Anlegen<% END %>">
+    <input type="submit" value="<% IF entry %><% l('Speichern') %><% ELSE %><% l('Anlegen') %><% END %>">
 </form>

@@ -1,0 +1,67 @@
+{
+    "Startseite": "Homepage",
+    "Anmelden": "Login",
+    "Registrieren": "Register",
+    "Sicherheit": "Security",
+    "Instanzen": "Instances",
+    "Dokumentation": "Documentation",
+    "Bedingungen": "Terms",
+    "Impressum": "Imprint",
+    "Abmelden": "Logout",
+
+    "Benutzername": "Username",
+    "Passwort": "Password",
+
+    "Folgende Fehler sind aufgetreten:": "Following errors occured:",
+    "E-Mail Adresse": "E-Mail address",
+    "Passwort wiederholen": "Retype password",
+    "Mit der Registrierung stimmen Sie automagisch den <a href='/terms'>%1</a> zu.": "By registering, you automatically accept the <a href='/terms'>%1</a>.",
+    "Konto erfolgreich registriert.": "Account created.",
+
+    "Aktive Sitzungen": "Active sessions",
+    "Alle Sitzungen beenden": "End all sessions",
+
+    "Passwort ändern": "Change password",
+    "Passwort erfolgreich geändert": "Password changed successfully",
+    "Bestehendes Passwort": "Current password",
+    "Neues Passwort": "New password",
+    "Neues Passwort wiederholen": "Retype new password",
+    "Bitte beachten Sie, dass hierbei keine bestehenden Sitzungen ausgeloggt werden.": "Please note: no active sessions will be terminated by changing your password.",
+
+    "Achtung!": "Attention!",
+    "Wenn Sie fortfahren, werden alle Situngen beendet! In den betroffenen Anwendungen müssen Sie sich dann erneut einloggen.": "If you continue, all sessions will be terminated. You will have to login in all applications again, if they should still be allowed to access your account.",
+    "Möchten Sie fortfahren?": "Do you want to continue?",
+
+    "Icinga2 Instanzen": "Icinga2 instances",
+    "Instanz bearbeiten": "Edit instance",
+    "Instanz anlegen": "Add new instance",
+    "Speichern erfolgreich": "Saved.",
+    "Beschreibung": "Description",
+    "API URL": "API URL",
+    "API Nutzername": "API username",
+    "API Passwort": "API password",
+    "API Zertifikat": "API certificate",
+    "Speichern": "Save",
+    "Anlegen": "Create",
+
+    "Authentifizierungsanfrage": "Authentication request",
+    "\"%1\" möchte Zugriff auf Ihren Account bekommen.": "\"%1\" would like to get access to your account.",
+    "Wenn Sie diese Anfrage annehmen, bekommt \"%1\" vollen Zugriff auf das API-Gateway zu Ihren Icinga-Instanzen.": "If you accept this request, \"%1\" will get full access to the API gateway in your name.",
+    "Authentifizierungsanfrage für unbekannten Client erhalten und geblockt.": "Blocked authentication attempt for unknown client for security reasons.",
+    "Anfrage akzeptieren": "Accept request",
+
+    "Ungültige Zugangsdaten": "Invalid credentials",
+    "Die Passwörter stimmen nicht überein": "The passwords are not the same",
+    "Das Passwort muss mindestens 8 Zeichen lang sein (das ist aber auch die einzige Regel)": "The password has to be at least 8 characters long (but this is the only rule)",
+    "Der Benutzername muss mindestens 4 Zeichen lang sein": "The username must be at least 4 characters in length",
+    "Der Benutzername ist bereits vergeben": "The username is already taken",
+    "Die E-Mail Adresse wird bereits verwendet": "This e-mail address is already in use",
+    "Bestehendes Passwort ist nicht korrekt": "The current password is invalid",
+    "Neue Passwörter sind nicht identisch": "Your new passwords are not the same",
+
+    "Icinga2 API Gateway": "Icinga2 API Gateway",
+    "Dies ist ein kleiner Webdienst, der es Anwendungen ermöglicht, über einen zentralen Server auf verschiedene Icinga2-Instanzen und deren APIs zuzugreifen.": "This is a simple webservice, allowing applications to access multiple Icinga2 instances and their APIs over a single server",
+    "Anwendungen können sich dabei per OAuth2, Cookie oder Basic-Authentifizierung an diesem Server anmelden.": "Applications are authenticated with OAuth2, Basic-Auth or simple cookie authentication.",
+    "Entwickelt wurde dieser Dienst, um einen Skill für Amazon Alexa zu ermöglichen. Diese Skills können vom Endnutzer nicht konfiguriert werden, es gibt nur Accountverknüpfungen über OAuth2. Deshalb war ein zentraler Server als Gateway notwendig, der aber auch für andere Anwendungen genutzt werden kann.": "This service was developed as a dependency for the Icinga2 Alexa skill. Alexa skills cannot be configured by the end user other than account linking, so this service was needed.",
+    "Weitere Informationen gibt es in der <a href='/doc'>%1</a>": "More information can be found in the <a href=\"/doc\">%1</a>"
+}

@@ -1,11 +1,10 @@
-<h1>Authentifizierungsanfrage</h1>
+<h1><% l('Authentifizierungsanfrage') %></h1>
 <% IF client %>
-    <p><% client.name %> möchte Zugriff auf Ihren Account bekommen.</p>
-    <p><% client.description %></p>
-    <p>Wenn Sie diese Anfrage annehmen, bekommt <% client.name %> vollen Zugriff auf das API-Gateway zu Ihren Icinga-Instanzen.</p>
+    <p><% l('"%1" möchte Zugriff auf Ihren Account bekommen.', [client.name]) %></p>
+    <p><% l('Wenn Sie diese Anfrage annehmen, bekommt "%1" vollen Zugriff auf das API-Gateway zu Ihren Icinga-Instanzen.', [client.name]) %></p>
     <form method="post">
-        <input type="submit" value="Anfrage akzeptieren">
+        <input type="submit" value="<% l('Anfrage akzeptieren') %>">
     </form>
 <% ELSE %>
-    <p>Authentifizierungsanfrage für unbekannten Client erhalten und geblockt.</p>
+    <p><% l('Authentifizierungsanfrage für unbekannten Client erhalten und geblockt.') %></p>
 <% END %>

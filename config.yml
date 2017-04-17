@@ -29,3 +29,10 @@ plugins:
       - "response_type"
       - "scope"
       - "redirect_uri"
+  Locale::Wolowitz:
+    fallback: "en"
+    locale_path_directory: "i18n"
+    lang_session: "lang"
+    lang_available:
+      - "en"
+      - "de"

@@ -1,4 +1,4 @@
-<h1>Aktive Sitzungen</h1>
+<h1><% l('Aktive Sitzungen') %></h1>
 <div class="material_list">
     <% FOREACH session IN sessions %>
         <div style="clear:both">
@@ -7,5 +7,5 @@
             </div>
         </div>
     <% END %>
-    <a href="/security/end_session" title="Alle Sitzungen beenden">♻</a>
+    <a href="/security/end_session" title="<% l('Alle Sitzungen beenden') %>">♻</a>
 </div>

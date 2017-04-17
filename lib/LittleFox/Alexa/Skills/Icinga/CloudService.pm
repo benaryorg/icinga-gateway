@@ -3,6 +3,7 @@ package LittleFox::Alexa::Skills::Icinga::CloudService;
 use Dancer2;
 use Dancer2::Plugin::Auth::Tiny;
 use Dancer2::Plugin::DBIC;
+use Dancer2::Plugin::Locale::Wolowitz;
 use URI;
 
 use LittleFox::Alexa::Skills::Icinga::CloudService::API;
@@ -50,6 +51,7 @@ post '/login' => sub {
     else {
         template 'login' => {
             return_url => params->{return_url},
+            error      => loc('Ungültige Zugangsdaten'),
         };
     }
 };
@@ -67,23 +69,23 @@ post '/register' => sub {
     my @errors = ();
 
     if($password1 ne $password2) {
-        push(@errors, 'Die Passwörter stimmen nicht überein');
+        push(@errors, loc('Die Passwörter stimmen nicht überein'));
     }
 
     if(length($password1) < 8) {
-        push(@errors, 'Das Passwort muss mindestens 8 Zeichen lang sein (das ist aber auch die einzige Regel)');
+        push(@errors, loc('Das Passwort muss mindestens 8 Zeichen lang sein (das ist aber auch die einzige Regel)'));
     }
 
     if(length($username) < 4) {
-        push(@errors, 'Der Benutzername muss mindestens 4 Zeichen lang sein');
+        push(@errors, loc('Der Benutzername muss mindestens 4 Zeichen lang sein'));
     }
 
     if(rset('User')->search({username => $username})->count) {
-        push(@errors, 'Der Benutzername ist bereits vergeben');
+        push(@errors, loc('Der Benutzername ist bereits vergeben'));
     }
 
     if(rset('User')->search({email => $email})->count) {
-        push(@errors, 'Die E-Mail Adresse wird bereits verwendet');
+        push(@errors, loc('Die E-Mail Adresse wird bereits verwendet'));
     }
 
     if(@errors) {
