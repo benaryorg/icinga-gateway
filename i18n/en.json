@@ -59,7 +59,7 @@
     "Bestehendes Passwort ist nicht korrekt": "The current password is invalid",
     "Neue Passwörter sind nicht identisch": "Your new passwords are not the same",
 
-    "Icinga2 API Gateway": "Icinga2 API Gateway",
+    "Icinga2 API Gateway": "Icinga Cloud",
     "Dies ist ein kleiner Webdienst, der es Anwendungen ermöglicht, über einen zentralen Server auf verschiedene Icinga2-Instanzen und deren APIs zuzugreifen.": "This is a simple webservice, allowing applications to access multiple Icinga2 instances and their APIs over a single server",
     "Anwendungen können sich dabei per OAuth2, Cookie oder Basic-Authentifizierung an diesem Server anmelden.": "Applications are authenticated with OAuth2, Basic-Auth or simple cookie authentication.",
     "Entwickelt wurde dieser Dienst, um einen Skill für Amazon Alexa zu ermöglichen. Diese Skills können vom Endnutzer nicht konfiguriert werden, es gibt nur Accountverknüpfungen über OAuth2. Deshalb war ein zentraler Server als Gateway notwendig, der aber auch für andere Anwendungen genutzt werden kann.": "This service was developed as a dependency for the Icinga2 Alexa skill. Alexa skills cannot be configured by the end user other than account linking, so this service was needed.",
