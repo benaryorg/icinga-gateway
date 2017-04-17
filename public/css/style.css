@@ -29,6 +29,12 @@ header {
     padding-left: 0.5em;
     padding-right: 0.5em;
     font-weight: bold;
+
+    background-image: url(/img/icinga-cloud-120.png);
+    background-repeat: no-repeat;
+    background-size: auto 2em;
+    background-position: 0.5em 0;
+    padding-left: 3em;
 }
 
 footer {

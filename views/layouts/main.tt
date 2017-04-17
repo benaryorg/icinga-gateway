@@ -4,7 +4,12 @@
         <title><% IF title %><% title %> - <% END %><% l('Icinga2 API Gateway') %></title>
         <meta http-equiv="content-type" type="text/html;charset=utf8">
         <link rel="stylesheet" type="text/css" href="/css/style.css">
+        <link rel="apple-touch-icon" sizes="128x128" href="/img/icinga-cloud-128.png">
+        <link rel="apple-touch-icon" sizes="512x512" href="/img/icinga-cloud-512.png">
+        <link rel="manifest" href="manifest.json">
+        <meta name="theme-color" content="#34aadc">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black-transparent">
     </head>
