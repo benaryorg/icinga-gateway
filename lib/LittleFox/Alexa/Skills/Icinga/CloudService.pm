@@ -1,9 +1,11 @@
 package LittleFox::Alexa::Skills::Icinga::CloudService;
 
+use Crypt::JWT 'encode_jwt', 'decode_jwt';
 use Dancer2;
 use Dancer2::Plugin::Auth::Tiny;
 use Dancer2::Plugin::DBIC;
 use Dancer2::Plugin::Locale::Wolowitz;
+use Try::Tiny;
 use URI;
 
 use LittleFox::Alexa::Skills::Icinga::CloudService::API;
@@ -13,6 +15,61 @@ use LittleFox::Alexa::Skills::Icinga::CloudService::Security;
 
 prefix undef;
 our $VERSION = 0.001;
+
+sub get_csrf_token {
+    my $payload = {
+        uri => request->path,
+        sub => session('user'),
+    };
+
+    return encode_jwt(payload => $payload, alg => 'HS256', key => config->{csrf_key});
+}
+
+sub validate_csrf_token {
+    my ($token) = @_;
+
+    my $data;
+
+    try {
+        $data = decode_jwt(
+            token      => $token,
+            key        => config->{csrf_key},
+        );
+
+        if($data) {
+            my $user_session = session('user');
+            my $user_token   = $data->{sub};
+
+            if(defined $user_session != defined $user_token) {
+                $data = undef;
+            }
+            elsif($user_session != $user_token) {
+                $data = undef;
+            }
+        }
+    }
+    catch {
+    };
+
+    return 0 unless $data;
+
+    return $data->{uri} eq request->path;
+}
+
+hook before => sub {
+    if(request->is_post()) {
+        my $token = param('csrf_token');
+        if(!$token || !validate_csrf_token($token)) {
+            send_error 'CSRF protection failed - this looks like an attack!', 403;
+        }
+    }
+};
+
+hook before_template_render => sub {
+    my ($tokens) = @_;
+
+    $tokens->{csrf_token} = get_csrf_token;
+};
 
 get '/' => sub {
     template 'index';
@@ -42,6 +99,7 @@ post '/login' => sub {
         delete $params->{username};
         delete $params->{password};
         delete $params->{return_url};
+        delete $params->{csrf_token};
 
         my $uri = URI->new($return_url // '/');
         $uri->query_form($params);

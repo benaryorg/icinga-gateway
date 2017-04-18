@@ -10,4 +10,5 @@
     <label for="password"><% l('Passwort') %></label>
     <input type="password" name="password" id="password">
     <input type="submit" value="<% l('Anmelden') %>">
+    <input type="hidden" name="csrf_token" value="<% csrf_token %>">
 </form>

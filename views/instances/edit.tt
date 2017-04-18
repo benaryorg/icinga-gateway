@@ -16,4 +16,5 @@
         <textarea name="api_cert" id="api_cert" cols="80" rows="25"><% entry.api_certificate %></textarea>
     <% END %>
     <input type="submit" value="<% IF entry %><% l('Speichern') %><% ELSE %><% l('Anlegen') %><% END %>">
+    <input type="hidden" name="csrf_token" value="<% csrf_token %>">
 </form>

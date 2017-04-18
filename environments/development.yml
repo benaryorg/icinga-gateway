@@ -1,4 +1,5 @@
 ---
+csrf_key: isi1oNooxaiy7xaz0Xeev5Ietaetah8ing6yoh5ioR9niepeezahz7Eidee4lohw
 engines:
   session:
     Cookie:

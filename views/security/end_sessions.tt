@@ -4,4 +4,5 @@
     <p><% l('Wenn Sie fortfahren, werden alle Situngen beendet! In den betroffenen Anwendungen müssen Sie sich dann erneut einloggen.') %></p>
     <p><% l('Möchten Sie fortfahren?') %></p>
     <input type="submit" value="<% l('Alle Sitzungen beenden') %>">
+    <input type="hidden" name="csrf_token" value="<% csrf_token %>">
 </form>

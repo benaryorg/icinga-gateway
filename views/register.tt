@@ -22,5 +22,6 @@
     <label for="password2"><% l('Passwort wiederholen') %></label>
     <input type="password" name="password2" id="password2" required>
     <input type="submit" value="<% l('Registrieren') %>">
+    <input type="hidden" name="csrf_token" value="<% csrf_token %>">
     <small><% l("Mit der Registrierung stimmen Sie automagisch den <a href='/terms'>%1</a> zu.", [l('Bedingungen')]) %></small>
 </form>
