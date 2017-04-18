@@ -5,6 +5,7 @@ use Dancer2;
 use Dancer2::Plugin::Auth::Tiny;
 use Dancer2::Plugin::DBIC;
 use Dancer2::Plugin::Locale::Wolowitz;
+use Text::Markdown 'markdown';
 use Try::Tiny;
 use URI;
 
@@ -72,7 +73,7 @@ hook before_template_render => sub {
 };
 
 get '/' => sub {
-    template 'index';
+    redirect '/start';
 };
 
 get '/logout' => sub {
@@ -159,6 +160,33 @@ post '/register' => sub {
             success => 1,
         };
     }
+};
+
+get '/:doc_name' => sub {
+    my $lang     = loc('langcode');
+    my $doc_name = params->{doc_name};
+    my $filename = "$FindBin::Bin/../i18n/docs/$lang/$doc_name.md";
+
+    if($doc_name =~ /\.\./) {
+        error '.. in $doc_name';
+        send_error 'Not found', 404;
+    }
+
+    if ( -f $filename ) {
+        open(my $fh, '<', $filename);
+        local $/ = undef;
+
+        my $markdown = <$fh>;
+        close($fh);
+
+        utf8::decode($markdown);
+
+        return template empty => {
+            content =>  markdown($markdown)
+        };
+    }
+
+    pass;
 };
 
 1;
