@@ -3,6 +3,8 @@
     <p><% l('"%1" möchte Zugriff auf Ihren Account bekommen.', [client.name]) %></p>
     <p><% l('Wenn Sie diese Anfrage annehmen, bekommt "%1" vollen Zugriff auf das API-Gateway zu Ihren Icinga-Instanzen.', [client.name]) %></p>
     <form method="post">
+        <label for="description"><% l('Beschreibung') %></label>
+        <input type="text" name="description" id="description" value="<% description %>">
         <input type="submit" value="<% l('Anfrage akzeptieren') %>">
         <input type="hidden" name="csrf_token" value="<% csrf_token %>">
     </form>
