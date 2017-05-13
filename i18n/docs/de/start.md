@@ -1,4 +1,4 @@
-# Icinga Cloud
+# Startseite
 
 Dies ist ein kleiner Webdienst, der es Anwendungen ermöglicht, über einen zentralen Server auf verschiedene Icinga2-Instanzen und deren APIs zuzugreifen.
 

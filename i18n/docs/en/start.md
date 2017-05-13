@@ -1,4 +1,4 @@
-# Icinga Cloud
+# Startpage
 
 This is a simple web service, allowing applications to access all Icinga2 instances an user has configured over a central server.
 
