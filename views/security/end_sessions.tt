@@ -1,4 +1,3 @@
-<h1><% l('Alle Sitzungen beenden') %></h1>
 <form method="post">
     <p><% l('Achtung!') %></p>
     <p><% l('Wenn Sie fortfahren, werden alle Situngen beendet! In den betroffenen Anwendungen müssen Sie sich dann erneut einloggen.') %></p>

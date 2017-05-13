@@ -14,38 +14,38 @@
         <meta name="apple-mobile-web-app-status-bar-style" content="black-transparent">
     </head>
     <body>
-        <div id="page">
-            <header>
-                <div>
-                    <% l('Icinga2 API Gateway') %>
-                    <div id="menu">
-                        <a href="#menuPopup">☰</a>
-                        <div id="menuPopup">
-                            <ul>
-                                <li><a href="/"><% l('Startseite') %></a></li>
-                                <% IF !session.user %>
-                                        <li><a href="/login?return_url=<% request.uri_for(request.path) %>"><% l('Anmelden') %></a></li>
-                                        <li><a href="/register"><% l('Registrieren') %></a></li>
-                                <% ELSE %>
-                                    <li><a href="/security"><% l('Sicherheit') %></a></li>
-                                    <li><a href="/instances"><% l('Instanzen') %></a></li>
-                                <% END %>
-                                <li><a href="/doc"><% l('Dokumentation') %></a></li>
-                                <li><a href="/terms"><% l('Bedingungen') %></a></li>
-                                <li><a href="/imprint"><% l('Impressum') %></a></li>
-                                <% IF session.user %>
-                                    <li><a href="/logout"><% l('Abmelden') %></a></li>
-                                <% END %>
-                            </ul>
-                        </div>
-                    </div>
+        <header>
+            <% l('Icinga2 API Gateway') %>
+            <div id="menu">
+                <a href="#menuPopup">☰</a>
+                <div id="menuPopup">
+                    <ul>
+                        <li><a href="/"><% l('Startseite') %></a></li>
+                        <% IF !session.user %>
+                            <li><a href="/login?return_url=<% request.uri_for(request.path) %>"><% l('Anmelden') %></a></li>
+                            <li><a href="/register"><% l('Registrieren') %></a></li>
+                        <% ELSE %>
+                            <li><a href="/security"><% l('Sicherheit') %></a></li>
+                            <li><a href="/instances"><% l('Instanzen') %></a></li>
+                        <% END %>
+                        <li><a href="/doc"><% l('Dokumentation') %></a></li>
+                        <li><a href="/terms"><% l('Bedingungen') %></a></li>
+                        <li><a href="/imprint"><% l('Impressum') %></a></li>
+                        <% IF session.user %>
+                            <li><a href="/logout"><% l('Abmelden') %></a></li>
+                        <% END %>
+                    </ul>
                 </div>
-                <% IF submenu %>
-                    <div class="tabs">
-                        <% FOREACH entry IN submenu %><a style="width: <% 100 / submenu.size %>%" href="<% entry.url %>" <% IF entry.url == request.path %>class="active_tab"<% END %>><% entry.name %></a><% END %>
-                    </div>
-                <% END %>
-            </header>
+            </div>
+        </header>
+        <div id="page">
+            <% IF submenu %>
+                <div class="tabs">
+                    <% FOREACH entry IN submenu %><a style="width: <% 100 / submenu.size %>%" href="<% entry.url %>" <% IF entry.url == request.path %>class="active_tab"<% END %>><% entry.name %></a><% END %>
+                </div>
+            <% ELSE %>
+                <h2><% title %></h2>
+            <% END %>
             <div id="content">
                 <% content %>
             </div>

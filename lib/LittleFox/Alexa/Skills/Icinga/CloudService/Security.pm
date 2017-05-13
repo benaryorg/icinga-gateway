@@ -22,6 +22,7 @@ sub security_submenu {
 
 get '' => needs login => sub {
     template 'security/index' => {
+        title    => loc('Aktive Sitzungen'),
         submenu  => security_submenu,
         sessions => [rset('User')->find(session('user'))->tokens->all],
     };
@@ -29,6 +30,7 @@ get '' => needs login => sub {
 
 get '/password' => needs login => sub {
     template 'security/password' => {
+        title    => loc('Passwort ändern'),
         submenu  => security_submenu,
     };
 };
@@ -56,6 +58,7 @@ post '/password' => needs login => sub {
 
     if(@errors) {
         template 'security/password' => {
+            title   => loc('Passwort ändern'),
             submenu => security_submenu,
             errors  => \@errors,
         };
@@ -63,6 +66,7 @@ post '/password' => needs login => sub {
     else {
         $user->change_password($new_password1);
         template 'security/password' => {
+            title   => loc('Passwort ändern'),
             submenu => security_submenu,
             success => 1,
         };
@@ -71,6 +75,7 @@ post '/password' => needs login => sub {
 
 get '/end_session' => sub {
     template 'security/end_sessions' => {
+        title   => loc('Alle Sitzungen beenden'),
         submenu => security_submenu,
     };
 };

@@ -76,6 +76,12 @@ get '/' => sub {
     redirect '/start';
 };
 
+get '/doc' => sub {
+    template 'doc' => {
+        title => loc('Dokumentation'),
+    };
+};
+
 get '/logout' => sub {
     session user => undef;
     redirect '/';
@@ -83,6 +89,7 @@ get '/logout' => sub {
 
 get '/login' => sub {
     template 'login' => {
+        title      => loc('Anmelden'),
         return_url => params->{return_url},
     };
 };
@@ -109,6 +116,7 @@ post '/login' => sub {
     }
     else {
         template 'login' => {
+            title      => loc('Anmelden'),
             return_url => params->{return_url},
             error      => loc('Ungültige Zugangsdaten'),
         };
@@ -116,7 +124,9 @@ post '/login' => sub {
 };
 
 get '/register' => sub {
-    template 'register';
+    template 'register' => {
+        title => loc('Registrieren'),
+    };
 };
 
 post '/register' => sub {
@@ -149,6 +159,7 @@ post '/register' => sub {
 
     if(@errors) {
         template register => {
+            title    => loc('Registrieren'),
             errors   => \@errors,
             username => $username,
             email    => $email,
@@ -157,6 +168,7 @@ post '/register' => sub {
     else {
         rset('User')->register($username, $email, $password1);
         template register => {
+            title   => loc('Registrieren'),
             success => 1,
         };
     }
@@ -180,9 +192,14 @@ get '/:doc_name' => sub {
         close($fh);
 
         utf8::decode($markdown);
+        my ($title) = $markdown =~ m/^# (.*)/;
+        $markdown               =~ s/^# (.*)//;
+
+        my $html    = markdown($markdown);
 
         return template empty => {
-            content =>  markdown($markdown)
+            title   => $title,
+            content => $html,
         };
     }
 

@@ -13,6 +13,7 @@ get '' => needs login => sub {
     my $description = $client->name . ' - ' . DateTime->now->strftime('%Y-%m-%d %H:%M');
 
     template 'auth/grant' => {
+        title         => loc('Authentifizierungsanfrage'),
         state         => params->{state},
         client        => $client,
         client_id     => params->{client_id},

@@ -4,6 +4,7 @@ body {
     padding: 0;
     margin: 0;
     color: rgba(0,0,0,0.87);
+    background-color: rgba(0,0,0,0.1);
 }
 
 pre,
@@ -15,26 +16,32 @@ code {
 #page {
     max-width: 1100px;
     margin: auto;
+    margin-top: -3em;
+    margin-bottom: 5em;
     position: relative;
+    padding-bottom: 1em;
+    background-color: white;
+    box-shadow: 0px 7px 17px rgba(0,0,0,0.8);
+    border-radius: 0.2em;
 }
 
 header {
+    height: 5em;
+    background-color: #34aadc;
     width: 100%;
-    font-size: 1.5em;
-    line-height: 2em;
+    font-size: 1.8em;
+    line-height: 3em;
     box-sizing: border-box;
     color: white;
-    background-color: #34aadc;
-    box-shadow: 0px 3px 5px rgba(0,0,0,0.56);
     padding-left: 0.5em;
     padding-right: 0.5em;
     font-weight: bold;
 
-    background-image: url(/img/icinga-cloud-120.png);
+    background-image: url(/icinga-cloud-white.svg);
     background-repeat: no-repeat;
-    background-size: auto 2em;
+    background-size: auto 3em;
     background-position: 0.5em 0;
-    padding-left: 3em;
+    padding-left: 4em;
 }
 
 footer {
@@ -64,10 +71,11 @@ footer {
 }
 
 #menuPopup {
-    max-height: 0;
-    opacity: 0;
-    transition: opacity 0.1s ease-in, max-height 0.5s ease-in;
     overflow: hidden;
+    transition: all 0.1s ease-out;
+    transform: scale(0);
+    transform-origin: 100% 0;
+    visibility: none;
 
     font-size: 0.7em;
     line-height: 1em;
@@ -75,21 +83,22 @@ footer {
     background: white;
     text-shadow: none;
     font-weight: normal;
-    box-shadow: 2px 2px 8px rgba(0,0,0,0.56);
-    z-index: -1;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.7);
 
     position: absolute;
-    top: 0.6em;
-    right: 0.6em;
+    top: 1.5em;
+    right: 0.8em;
 
     box-sizing: border-box;
+    border-radius: 0.15em;
+    z-index: 2;
 }
 
 #menu:active #menuPopup,
 #menuPopup:hover, #menuPopup:target {
-    max-height: 100em; /* larger than every size this may need */
-    opacity: 1;
-    z-index: 2;
+    visibility: visible;
+    transform: scale(1);
+    box-shadow: 0px 7px 17px rgba(0,0,0,0.7);
 }
 
 #menuPopup ul {
@@ -126,10 +135,8 @@ footer {
 }
 
 form {
-    border-top: 1px solid #505050;
     padding-top: 1em;
     padding-left: 2em;
-    border-bottom: 1px solid #505050;
 }
 
 form div.errors {
@@ -229,9 +236,8 @@ div.material_list .subheader {
 
 div.tabs {
     padding: 0;
-    font-size: 0.7em;
-    line-height: 1.1em;
-    font-weight: normal;
+    font-size: 1.5em;
+    line-height: 1.5em;
     text-shadow: none;
 }
 
@@ -241,19 +247,52 @@ div.tabs a {
     text-align: center;
     box-sizing; border-box;
     margin: 0;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(0, 0, 0, 0.56);
     text-decoration: none;
-    height: 1.6em;
+    height: 2em;
     box-sizing: border-box;
+    border-bottom: 0.05em solid rgba(0, 0, 0, 0.1);
 }
 
 div.tabs a.active_tab {
-    color: rgba(255, 255, 255, 1);
-    border-bottom: 0.2em solid white;
+    color: #34aadc;
+    font-weight: bold;
+    border-bottom: 0.14em solid #34aadc;
 }
 
-@media (max-width: 30em) {
+#page > h2 {
+    font-size: 1.8em;
+    height: 1.7em;
+    line-height: 1.7em;
+    margin-top: 0;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    border-bottom: 0.05em solid rgba(0, 0, 0, 0.1);
+    padding-left: 0.5em;
+    color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 0;
+}
+
+@media (max-width: 1100px) {
     body {
-        font-size: 12pt;
+        background: white;
+    }
+
+    header {
+        background-size: auto 1.2em;
+        background-position: 0.5em 0.1em;
+        height: 1.5em;
+        line-height: 1.5em;
+        padding-left: 2em;
+        font-size: 1.5em;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.56);
+    }
+
+    #page {
+        margin-top: 0;
+        box-shadow: none;
+        background: transparent;
     }
 }
+

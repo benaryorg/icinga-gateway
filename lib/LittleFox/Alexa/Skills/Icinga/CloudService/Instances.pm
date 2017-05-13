@@ -3,6 +3,7 @@ package LittleFox::Alexa::Skills::Icinga::CloudService::Instances;
 use Dancer2 appname => 'LittleFox::Alexa::Skills::Icinga::CloudService';
 use Dancer2::Plugin::Auth::Tiny;
 use Dancer2::Plugin::DBIC;
+use Dancer2::Plugin::Locale::Wolowitz;
 
 prefix '/instances';
 
@@ -11,6 +12,7 @@ get '' => needs login => sub {
     my @instances = $user->administrated_instances->all;
 
     template 'instances/index' => {
+        title     => loc('Icinga2 Instanzen'),
         instances => \@instances,
     };
 };
@@ -29,6 +31,7 @@ get '/edit' => needs login => sub {
     }
 
     template 'instances/edit' => {
+        title    => $entry ? loc('Instanz bearbeiten') : loc('Instanz anlegen'),
         entry    => $entry,
         readonly => $readonly,
     };
@@ -72,6 +75,7 @@ post '/edit' => needs login => sub {
     }
 
     template 'instances/edit' => {
+        title    => $entry ? loc('Instanz bearbeiten') : loc('Instanz anlegen'),
         readonly => $readonly,
         entry    => $entry,
         success  => 1,

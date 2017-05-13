@@ -1,4 +1,3 @@
-<h1><% l('Icinga2 Instanzen') %></h2>
 <div class="material_list">
     <% FOREACH instance IN instances %>
         <a href="/instances/edit?id=<% instance.id %>">

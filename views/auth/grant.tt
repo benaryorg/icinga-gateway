@@ -1,4 +1,3 @@
-<h1><% l('Authentifizierungsanfrage') %></h1>
 <% IF client %>
     <p><% l('"%1" möchte Zugriff auf Ihren Account bekommen.', [client.name]) %></p>
     <p><% l('Wenn Sie diese Anfrage annehmen, bekommt "%1" vollen Zugriff auf das API-Gateway zu Ihren Icinga-Instanzen.', [client.name]) %></p>

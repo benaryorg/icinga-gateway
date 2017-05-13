@@ -1,4 +1,3 @@
-<h1><% l('Aktive Sitzungen') %></h1>
 <div class="material_list">
     <% FOREACH session IN sessions %>
         <div style="clear:both">

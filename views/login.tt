@@ -1,4 +1,3 @@
-<h1><% l('Anmelden') %></h1>
 <form method="post">
     <% IF error %>
         <div class="error">
